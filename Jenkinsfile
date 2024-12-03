@@ -3,56 +3,29 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 
-'https://github.com/KiranTalwar/SeleniumPractice_SwagLabs'
+                // Make sure the branch name matches your GitHub repository
+                git branch: 'main', url: 'https://github.com/KiranTalwar/SeleniumPractice_SwagLabs'
             }
         }
         stage('Install Dependencies') {
             steps {
+                // Running Maven to install dependencies
                 sh 'mvn clean install'
             }
         }
         stage('Run Tests') {
             steps {
+                // Running tests with Maven
                 sh 'mvn test'
             }
         }
     }
     post {
         always {
+            // Make sure the path to your JUnit report is correct
             junit '**/target/surefire-reports/*.xml'
-            archiveArtifacts artifacts: '**/target/*.jar', 
-allowEmptyArchive: true
+            // Archive JAR files if they are generated in the target directory
+            archiveArtifacts artifacts: '**/target/*.jar', allowEmptyArchive: true
         }
     }
 }
-pipeline {
-    agent any
-    stages {
-        stage('Checkout') {
-            steps {
-                git branch: 'main', url: 
-'https://github.com/KiranTalwar/SeleniumPractice_SwagLabs'
-            }
-        }
-        stage('Install Dependencies') {
-            steps {
-                sh 'mvn clean install'
-            }
-        }
-        stage('Run Tests') {
-            steps {
-                sh 'mvn test'
-            }
-        }
-    }
-    post {
-        always {
-            junit '**/target/surefire-reports/*.xml'
-            archiveArtifacts artifacts: '**/target/*.jar', 
-allowEmptyArchive: true
-        }
-    }
-}
-
-
