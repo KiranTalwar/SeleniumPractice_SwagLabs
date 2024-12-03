@@ -6,11 +6,16 @@ pipeline {
         jdk 'Java 11'    // Ensure Java 11 is installed in Jenkins
     }
 
+    environment {
+        JAVA_HOME = '/opt/homebrew/Cellar/openjdk/23.0.1/libexec/openjdk.jdk/Contents/Home'  // Set your JAVA_HOME path here
+        PATH = "${JAVA_HOME}/bin:${env.PATH}"  // Ensure the java binary is available in the PATH
+    }
+
     stages {
         stage('Checkout') {
             steps {
-                // Checkout code from GitHub repository (specify 'master' branch)
-                git branch: 'master', url: 'https://github.com/KiranTalwar/SeleniumPractice_SwagLabs'
+                // Checkout code from GitHub repository
+                git 'https://github.com/KiranTalwar/SeleniumPractice_SwagLabs'
             }
         }
 
