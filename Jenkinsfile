@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'master', url: 
+                git branch: 'main', url: 
 'https://github.com/KiranTalwar/SeleniumPractice_SwagLabs'
             }
         }
@@ -31,7 +31,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'master', url: 
+                git branch: 'main', url: 
 'https://github.com/KiranTalwar/SeleniumPractice_SwagLabs'
             }
         }
