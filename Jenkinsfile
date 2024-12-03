@@ -9,8 +9,8 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Checkout code from GitHub repository
-                git 'https://github.com/KiranTalwar/SeleniumPractice_SwagLabs'
+                // Checkout code from GitHub repository (specify 'master' branch)
+                git branch: 'master', url: 'https://github.com/KiranTalwar/SeleniumPractice_SwagLabs'
             }
         }
 
