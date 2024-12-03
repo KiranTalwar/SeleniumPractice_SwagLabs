@@ -22,14 +22,14 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>4.12.1</version>
+            <version>4.12.1</version> <!-- Updated to a more recent version -->
         </dependency>
 
         <!-- WebDriverManager -->
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
-            <version>5.5.3</version>
+            <version>5.5.3</version> <!-- Latest version -->
         </dependency>
 
         <!-- JUnit Jupiter (JUnit 5) for Testing -->
@@ -74,9 +74,26 @@
                 <configuration>
                     <testFailureIgnore>false</testFailureIgnore>
                     <includes>
-                        <include>**/*Test.java</include> <!-- Make sure test classes match this pattern -->
+                        <include>**/*Test.java</include> <!-- Adjust to match your test class names -->
                     </includes>
                 </configuration>
+            </plugin>
+
+            <!-- Exec Maven Plugin to Run the Main Class -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>Practice_Automation.Automation_Form12</mainClass> <!-- Your main class here -->
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
